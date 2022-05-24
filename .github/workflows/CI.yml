@@ -1,0 +1,41 @@
+name: CI
+on:
+  push:
+    paths-ignore:
+      - "README.md"
+      - "**/docs/**"
+      - ".github/workflows/docs.yml"
+      - "paper.md"
+      - "paper.bib"
+      - "**/joss_plots/**"
+
+  pull_request:
+    branches:
+      - master
+
+  schedule:
+    - cron: "0 11 * * *"
+
+
+jobs:
+  test:
+    name: Test
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pytest-cov
+      - name: Test on ${{ matrix.python-version }}
+        run: |
+          cd github_teaching_example
+          python -m pytest test/test*
