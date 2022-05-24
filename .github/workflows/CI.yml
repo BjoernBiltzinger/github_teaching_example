@@ -35,6 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pytest-cov
+          pip install -r requirements.txt
       - name: Test on ${{ matrix.python-version }}
         run: |
           cd github_teaching_example
