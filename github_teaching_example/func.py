@@ -21,7 +21,7 @@ class Student:
         """
         This student passed a class so he will be in the next one
         """
-        self._schoolclass += 1
+        self._schoolclass += 2
 
     def birthday(self):
         """
