@@ -23,8 +23,8 @@ class Student:
         """
         self._schoolclass += 1
 
-    #def birthday(self):
-    #    """
-    #    This student got one year older
-    #    """
-    #    self._age += 1
+    def birthday(self):
+        """
+        This student got one year older
+        """
+        self._age += 1
